@@ -1,10 +1,69 @@
-<!doctype html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+<!-- //lista de palavras para 'fotografia' em várias linguas// 
+    //fazer o logo mudar automaticamente com as palavras// -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="stylesheet.css" />
+    <title>retrato</title>
+  </head>
+  <body>
+    <main id="main">
+      <div class="page-title">retrato</div>
+      <div class="add-images">
+        <form v-on:submit="uploadImage" class="add-images">
+          <p class="add-image-title">add your image now</p>
+          <label for="input-title">title</label>
+          <input
+            id="input-title"
+            v-model="upload.title"
+            type="text"
+            placeholder="title"
+            required
+          />
+          <label for="input-description">description</label>
+          <input
+            id="input-description"
+            v-model="upload.description"
+            type="text"
+            placeholder="description"
+            required
+          />
+          <label for="input-username">username</label>
+          <input
+            id="input-username"
+            v-model="upload.username"
+            type="text"
+            placeholder="username"
+            required
+          />
+          <label for="input-file">file</label>
+          <input
+            id="input-file"
+            v-on:change="handleFileChange"
+            type="file"
+            placeholder="choose file"
+            required
+          />
+          <button type="submit">upload</button>
+        </form>
+      </div>
+      <p class="last-uploads">last uploads</p>
+      <div class="card-container">
+        <div class="card" v-for="card in cards">
+          <img v-bind:src="card.url" v-bind:alt="card.title" />
+          <div class="card-content">
+            <p class="card-title">{{ card.title }}</p>
+            <p class="card-description">{{ card.description }}</p>
+          </div>
+        </div>
+      </div>
+    </main>
     <script src="/js/vue.js"></script>
     <script src="/js/axios.min.js"></script>
-</body>
+    <script src="/script.js"></script>
+  </body>
 </html>

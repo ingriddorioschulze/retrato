@@ -1,0 +1,59 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fce38a;
+}
+
+div.page-title {
+  font-family: Helvetica, sans-serif;
+  font-size: 90px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+label {
+  font-family: Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#input-title,
+#input-description,
+#input-username {
+  border: 2px black solid;
+}
+
+p.last-uploads {
+  font-family: Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
+  align-items: stretch;
+}
+
+.card {
+  border: 2px black solid;
+}
+
+img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card-content {
+  padding: 10px;
+}
+
+.card-title {
+}
+.card-desciption {
+}
