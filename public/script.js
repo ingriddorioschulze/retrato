@@ -2,7 +2,9 @@ new Vue({
     el: "#main",
     data: {
         cards: [],
-        upload: {}
+        upload: {},
+        pageNames: ["retrato", "fotografia", "bild", "picture"],
+        currentPageName: 0
     },
     methods: {
         handleFileChange: function(e) {
@@ -35,5 +37,10 @@ new Vue({
         axios.get("/cards").then(response => {
             this.cards = response.data;
         });
+        //todo clear interval//
+        setInterval(() => {
+            this.currentPageName =
+                (this.currentPageName + 1) % this.pageNames.length;
+        }, 1000);
     }
 });
