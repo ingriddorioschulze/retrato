@@ -26,7 +26,6 @@ const uploader = multer({
 const app = express();
 
 app.use(express.static(__dirname + "/public"));
-app.use("/images", express.static(__dirname + "/uploads"));
 app.use(express.json());
 
 app.get("/cards", (req, res) => {
@@ -45,9 +44,11 @@ app.post("/uploadImage", uploader.single("file"), (req, res) => {
                     req.body.username,
                     url
                 )
-                .then(() => {
+                .then(row => {
                     res.json({
-                        url: url
+                        url: url,
+                        id: row.id,
+                        created_at: row.created_at
                     });
                 });
         })
@@ -66,7 +67,10 @@ app.post("/addComment", (req, res) => {
         req.body.username,
         req.body.imageId
     ).then(comment => {
-        res.json({ id: comment });
+        res.json({
+            id: comment.id,
+            created_at: comment.created_at
+        });
     });
 });
 

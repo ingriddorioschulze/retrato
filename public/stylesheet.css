@@ -60,12 +60,13 @@ p.last-uploads {
   transition: 0.3s;
 } */
 
-img {
+.card-image {
   width: 100%;
   min-width: 300px;
   height: 70%;
   object-fit: cover;
   object-position: center;
+  cursor: pointer;
 }
 
 /* img {
@@ -95,4 +96,27 @@ img {
   font-weight: 600;
   font-size: 20px;
   text-align: center;
+}
+
+/* //POPUP// */
+
+.image-modal {
+  position: fixed;
+  width: 90vw;
+  height: 90vh;
+  top: 0;
+  background-color: black;
+  color: white;
+}
+
+.image-popup {
+  height: 30%;
+}
+
+.close {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  cursor: pointer;
+  font-size: 40px;
 }

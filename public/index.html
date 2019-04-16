@@ -18,7 +18,6 @@
       <div class="add-images">
         <form v-on:submit="uploadImage" class="add-images">
           <p class="add-image-title">add your image now</p>
-          <label for="input-title">title</label>
           <input
             id="input-title"
             v-model="upload.title"
@@ -26,7 +25,6 @@
             placeholder="title"
             required
           />
-          <label for="input-description">description</label>
           <input
             id="input-description"
             v-model="upload.description"
@@ -34,7 +32,6 @@
             placeholder="description"
             required
           />
-          <label for="input-username">username</label>
           <input
             id="input-username"
             v-model="upload.username"
@@ -42,13 +39,12 @@
             placeholder="username"
             required
           />
-          <label for="input-file">file</label>
           <input
             id="input-file"
             v-on:change="handleFileChange"
             type="file"
             placeholder="choose file"
-            required
+            required accept="image/*"
           />
           <button type="submit">upload</button>
         </form>
@@ -56,13 +52,14 @@
       <div class="last-uploads">last uploads</div>
       <div class="card-container">
         <div class="card" v-for="card in cards">
-          <img v-bind:src="card.url" v-bind:alt="card.title" />
+          <img class="card-image" v-on:click="openModal(card)" v-bind:src="card.url" v-bind:alt="card.title" />
           <div class="card-content">
             <div class="card-title">{{ card.title }}</div>
             <div class="card-description">{{ card.description }}</div>
           </div>
         </div>
       </div>
+      <image-modal v-bind:image="modalImage" v-if="modalImage" v-on:close="closeModal"/>
     </main>
     <script src="/js/vue.js"></script>
     <script src="/js/axios.min.js"></script>
