@@ -3,7 +3,7 @@ new Vue({
     data: {
         cards: [],
         upload: {},
-        pageNames: ["retrato", "fotografia", "bild", "picture"],
+        pageNames: ["retrato", "fotografia", "bild", "picture", "photo"],
         currentPageName: 0
     },
     methods: {

@@ -1,5 +1,6 @@
 const knox = require("knox-s3");
 let secrets;
+
 if (process.env.NODE_ENV == "production") {
     secrets = process.env; // in prod the secrets are environment variables
 } else {
