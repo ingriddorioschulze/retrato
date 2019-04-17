@@ -3,29 +3,103 @@
 }
 
 body {
-  background-color: #fce38a;
+  background-image: linear-gradient(
+    0deg,
+    #ffd6c2 11.63%,
+    #ff8b6a 11.63%,
+    #ff8b6a 23.26%,
+    #480032 23.26%,
+    #480032 34.88%,
+    #df0054 34.88%,
+    #df0054 50%,
+    #ffd6c2 50%,
+    #ffd6c2 61.63%,
+    #ff8b6a 61.63%,
+    #ff8b6a 73.26%,
+    #480032 73.26%,
+    #480032 84.88%,
+    #df0054 84.88%,
+    #df0054 100%
+  );
+  background-size: 860px 860px;
   font-family: Quicksand;
 }
 
-div.page-title {
+.page-title {
   font-size: 80px;
-  font-weight: 300;
   margin-bottom: 30px;
+  text-align: center;
+  color: white;
+}
+
+.add-images-container {
+  display: flex;
+  justify-content: center;
+}
+
+.add-image-title {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  color: white;
   text-align: center;
 }
 
-label {
-  font-size: 16px;
+#input-title {
+  height: 30px;
+  width: 15%;
+  border: 1px white solid;
+  border-radius: 2px;
+  margin-right: 5px;
 }
-
-#input-title,
-#input-description,
+#input-description {
+  height: 30px;
+  width: 15%;
+  border: 1px white solid;
+  border-radius: 2px;
+  margin-right: 5px;
+}
 #input-username {
-  border: 1px black solid;
+  height: 30px;
+  width: 15%;
+  border: 1px white solid;
+  border-radius: 2px;
+  margin-right: 5px;
 }
 
-p.last-uploads {
-  font-size: 15px;
+.inputfile {
+  height: 0.1px;
+  width: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputfile + label {
+  height: 30px;
+  width: 15%;
+  font-size: 11px;
+  font-weight: 700;
+  color: grey;
+  border: 1px white solid;
+  background: white;
+  border-radius: 2px;
+  padding: 8px 5px;
+}
+
+.btn-upload-image {
+  height: 30px;
+  border: 1px white solid;
+  border-radius: 2px;
+}
+
+.last-uploads {
+  font-size: 25px;
+  color: white;
+  margin-top: 40px;
+  margin-left: 20px;
+  margin-bottom: 20px;
 }
 
 /* .card-container {
@@ -44,12 +118,15 @@ p.last-uploads {
 .card {
   flex: 0 1 30%;
   height: 470px;
-  border: 1px black solid;
+  border: 1px #928a97;
+  border-radius: 2px;
   padding: 20px;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   margin: 20px 0;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 /* .card {
@@ -100,6 +177,10 @@ p.last-uploads {
 
 /* //POPUP// */
 
+.image-modal-container {
+  display: flex;
+}
+
 .image-modal {
   position: fixed;
   width: 90vw;
@@ -107,16 +188,20 @@ p.last-uploads {
   top: 0;
   background-color: black;
   color: white;
+  justify-content: center;
 }
 
 .image-popup {
-  height: 30%;
+  height: 55%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 2px solid white;
 }
 
 .close {
   position: absolute;
-  right: 5px;
+  right: 35px;
   top: 5px;
   cursor: pointer;
-  font-size: 40px;
+  font-size: 60px;
 }

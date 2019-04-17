@@ -58,7 +58,24 @@ new Vue({
     data: {
         cards: [],
         upload: {},
-        pageNames: ["retrato", "fotografia", "bild", "picture", "photo"],
+        pageNames: [
+            "retrato",
+            "fotografijo",
+            "bild",
+            "picture",
+            "photo",
+            "fotografie",
+            "fotografija",
+            "bilde",
+            "fotografering",
+            "fotografije",
+            "fotografía",
+            "kuva",
+            "fotografia",
+            "foto",
+            "immagine",
+            "gambar"
+        ],
         currentPageName: 0,
         modalImage: null
     },
