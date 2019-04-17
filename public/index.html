@@ -14,14 +14,14 @@
       <div class="page-title">{{pageNames[currentPageName]}}</div>
 
       <div class="add-images-container">
+        <div class="add-image-title">add your image now</div>
         <form v-on:submit="uploadImage" class="add-images">
-          <div class="add-image-title">add your image now</div>
           <input id="input-title" v-model="upload.title" type="text" placeholder="title" required/>
           <input id="input-description" v-model="upload.description" type="text" placeholder="description" required/>
           <input id="input-username" v-model="upload.username" type="text" placeholder="username" required/>
 
           <input type="file" name="input-file" id="file" class="inputfile" v-on:change="handleFileChange" placeholder="choose file" required accept="image/*"/>
-          <label for="file"><span> choose a file...</span></label>
+          <label for="file"><span>{{upload.file ? upload.file.name : 'choose a file...'}}</span></label>
 
           <button class="btn-upload-image"type="submit">upload</button>
         </form>
@@ -36,13 +36,10 @@
           </div>
         </div>
       </div>
-      <div class="image-modal-container">
         <image-modal v-bind:image="modalImage" v-if="modalImage" v-on:close="closeModal"/>
-      </div>
     </main>
     <script src="/js/vue.js"></script>
     <script src="/js/axios.min.js"></script>
-    <script src="/inputfile.js"></script>
     <script src="/script.js"></script>
   </body>
 </html>

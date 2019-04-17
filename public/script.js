@@ -1,20 +1,22 @@
 Vue.component("image-modal", {
     props: ["image"],
-    template: `<div class="image-modal" >
-        <div v-on:click="close" class="close">&times;</div>
-        <img class="image-popup" v-bind:src="image.url"/>
-        <div class="title">{{image.title}}</div>
-        <div class="description">{{image.description}}</div>
-        <div class="username-date">{{image.username}} at {{image.created_at}}</div>
+    template: `<div class="image-modal-container">
+        <div class="image-modal">
+        <div v-on:click="close" class="image-modal-close">&times;</div>
+        <img class="image-modal-image" v-bind:src="image.url"/>
+        <div class="image-modal-title">{{image.title}}</div>
+        <div class="image-modal-description">{{image.description}}</div>
+        <div class="image-modal-username-date">{{image.username}} at {{image.created_at}}</div>
         <div class="add-comment">Add a comment!</div>
-        <form v-on:submit="addComment">
-            <input v-model="comment" class="input-comment" type="text" placeholder="comment" required/>
-            <input v-model="username" class="input-username" type="text" placeholder="username" required/>
-            <button type="submit">submit</button>
+        <form v-on:submit="addComment" class="addComment">
+            <input v-model="comment" class="addComment-comment" type="text" placeholder="comment" required/>
+            <input v-model="username" class="addComment-username" type="text" placeholder="username" required/>
+            <button class="addComment-submit" type="submit">submit</button>
         </form>
-        <div v-for="c in comments" class="comment">
-            <div>{{c.comment}}!</div>
-            <div>{{c.username}} at {{c.created_at}}</div>
+            <div v-for="c in comments" class="comment">
+                <div>{{c.comment}}!</div>
+                <div>{{c.username}} at {{c.created_at}}</div>
+            </div>
         </div>
     </div>`,
     methods: {
@@ -114,6 +116,10 @@ new Vue({
                         id: response.data.id,
                         created_at: response.data.created_at
                     });
+                    this.upload.title = "";
+                    this.upload.description = "";
+                    this.upload.username = "";
+                    this.upload.file = null;
                 });
         }
     },
