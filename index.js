@@ -80,4 +80,10 @@ app.get("/seeComment/:imageId", (req, res) => {
     });
 });
 
+app.get("/getMoreImages/:id", (req, res) => {
+    db.getMoreImages(req.params.id).then(moreImages => {
+        res.send(moreImages);
+    });
+});
+
 app.listen(8080);

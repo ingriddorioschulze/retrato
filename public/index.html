@@ -20,8 +20,8 @@
           <input id="input-description" v-model="upload.description" type="text" placeholder="description" required/>
           <input id="input-username" v-model="upload.username" type="text" placeholder="username" required/>
 
-          <input type="file" name="input-file" id="file" class="inputfile" v-on:change="handleFileChange" placeholder="choose file" required accept="image/*"/>
-          <label for="file"><span>{{upload.file ? upload.file.name : 'choose a file...'}}</span></label>
+          <input type="file" name="input-file" id="file" class="inputfile" v-on:change="handleFileChange" required accept="image/*"/>
+          <label for="file"><span class="choose-file">{{upload.file ? upload.file.name.slice(0, 10) : 'choose a file...'}}</span></label>
 
           <button class="btn-upload-image"type="submit">upload</button>
         </form>
@@ -29,7 +29,12 @@
       <div class="last-uploads">last uploads</div>
       <div class="card-container">
         <div class="card" v-for="card in cards">
-          <img class="card-image" v-on:click="openModal(card)" v-bind:src="card.url" v-bind:alt="card.title" />
+
+          <a :href = "'#' + card.id"> 
+            <img class="card-image" v-on:click="openModal(card)" v-bind:src="card.url" v-bind:alt="card.title" /> 
+            <!-- //remove the on click event// -->
+          </a>
+
           <div class="card-content">
             <div class="card-title">{{ card.title }}</div>
             <div class="card-description">{{ card.description }}</div>

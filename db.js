@@ -44,3 +44,18 @@ exports.getCommentsForImage = function(imageId) {
         return result.rows;
     });
 };
+
+exports.getMoreImages = function(id) {
+    const q = `SELECT *, (
+    SELECT id FROM images
+    ORDER BY id ASC
+    LIMIT 1) 
+    AS smallest_id FROM images
+    WHERE id < $1
+    ORDER BY id DESC
+    LIMIT 12`;
+    const params = [id];
+    return db.query(q, params).then(result => {
+        return result.rows;
+    });
+};

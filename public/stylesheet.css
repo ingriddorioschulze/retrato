@@ -57,6 +57,7 @@ body {
   border: 1px white solid;
   border-radius: 2px;
   margin-right: 5px;
+  color: grey;
 }
 #input-description {
   height: 30px;
@@ -64,6 +65,7 @@ body {
   border: 1px white solid;
   border-radius: 2px;
   margin-right: 5px;
+  color: grey;
 }
 #input-username {
   height: 30px;
@@ -71,6 +73,7 @@ body {
   border: 1px white solid;
   border-radius: 2px;
   margin-right: 5px;
+  color: grey;
 }
 
 .inputfile {
@@ -82,23 +85,34 @@ body {
   z-index: -1;
 }
 
+::placeholder {
+  font-family: Quicksand;
+  font-size: 12px;
+  text-align: center;
+}
+
 .inputfile + label {
   height: 30px;
   width: 15%;
-  font-size: 11px;
-  font-weight: 700;
+  font-size: 12px;
   color: grey;
   border: 1px white solid;
   background: white;
   border-radius: 2px;
-  padding: 8px 5px;
+  padding: 7px 10px;
   margin-right: 5px;
+  white-space: nowrap;
 }
 
 .btn-upload-image {
   height: 30px;
   border: 1px white solid;
   border-radius: 2px;
+  font-family: Quicksand;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  color: grey;
 }
 
 .last-uploads {
@@ -179,7 +193,7 @@ body {
   height: 90%;
   background-color: black;
   color: white;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   position: relative;
   overflow: scroll;
@@ -231,6 +245,7 @@ body {
 .addComment {
   display: flex;
   justify-content: center;
+  margin-bottom: 30px;
 }
 .addComment-comment {
   height: 30px;
@@ -254,8 +269,15 @@ body {
   height: 30px;
   border: 1px white solid;
   border-radius: 2px;
-  justify-content: center;
+  font-family: Quicksand;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  color: grey;
 }
 
 .comment {
+  text-align: center;
+  font-size: 15px;
+  margin-bottom: 30px;
 }

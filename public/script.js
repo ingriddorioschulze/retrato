@@ -37,6 +37,10 @@ Vue.component("image-modal", {
                         comment: this.comment,
                         created_at: res.data.created_at
                     });
+
+                    this.username = "";
+                    this.comment = "";
+                    this.created_at = "";
                 });
         }
     },
@@ -47,6 +51,16 @@ Vue.component("image-modal", {
             comments: []
         };
     },
+
+    //watcher is a function that runs whenever a PROP has changed!//
+
+    //watch: {
+    //     imageId: function() {
+    //             this function runs whenever id in url changes
+    //      console.log("imageId has changed!");
+    //     axios request to get image and comments
+    //     }
+    // },
 
     mounted: function() {
         axios.get(`/seeComment/${this.image.id}`).then(res => {
@@ -59,6 +73,9 @@ new Vue({
     el: "#main",
     data: {
         cards: [],
+        //imageId: location.hash.slice(1) || 0;//
+        //the default value of imageId should be the id in the url IF THERE IS ONE!
+        //if there insn't one -- just default to 0, like before.
         upload: {},
         pageNames: [
             "retrato",
@@ -76,7 +93,9 @@ new Vue({
             "fotografia",
             "foto",
             "immagine",
-            "gambar"
+            "gambar",
+            "slika",
+            "kartinka"
         ],
         currentPageName: 0,
         modalImage: null
@@ -124,13 +143,61 @@ new Vue({
         }
     },
     mounted: function() {
+        // var self = this;
+        // //hashchange event fires every time the number following
+        // //the hash in the url changes//
+        // window.addEventListener("hashchange", function() {
+        //     console.log("location: ", location.hash);
+        // remove the hash symbol and get just the number
+        // console.log('location.hash.slice(1): ',
+        // location.hash.slice(1))
+        // self.card = location.hash.slice(1);
+        // });
+
         axios.get("/cards").then(res => {
             this.cards = res.data;
+            this.$nextTick(() => {
+                checkScroll();
+            });
         });
-        //todo clear interval//
+
+        const checkScroll = () => {
+            const userHasScrolledtoBottom = isScrolledToBottom();
+            if (userHasScrolledtoBottom) {
+                axios
+                    .get(
+                        `/getMoreImages/${this.cards[this.cards.length - 1].id}`
+                    )
+                    .then(res => {
+                        this.cards.push(...res.data);
+                        const lastCard = this.cards[this.cards.length - 1];
+                        if (lastCard.id !== lastCard.smallest_id) {
+                            this.$nextTick(() => {
+                                checkScroll();
+                            });
+                        }
+                    });
+            } else {
+                setTimeout(checkScroll, 500);
+            }
+        };
+
         setInterval(() => {
             this.currentPageName =
                 (this.currentPageName + 1) % this.pageNames.length;
         }, 1000);
     }
 });
+
+//when the user put something that doesn't exist in the database, close the modal//
+
+function isScrolledToBottom() {
+    const documentHeight = document.documentElement.scrollHeight;
+    const windowHeight = document.documentElement.clientHeight;
+    const windowScrollTop = document.documentElement.scrollTop;
+    if (documentHeight === windowHeight + windowScrollTop) {
+        return true;
+    } else {
+        return false;
+    }
+}
