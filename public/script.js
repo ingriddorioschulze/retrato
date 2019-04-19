@@ -1,5 +1,5 @@
 Vue.component("image-modal", {
-    props: ["image"],
+    props: ["imageId"],
     template: `<div class="image-modal-container">
         <div class="image-modal">
         <div v-on:click="close" class="image-modal-close">&times;</div>
@@ -27,7 +27,7 @@ Vue.component("image-modal", {
             e.preventDefault();
             axios
                 .post("/addComment", {
-                    imageId: this.image.id,
+                    imageId: this.imageId,
                     comment: this.comment,
                     username: this.username
                 })
@@ -48,22 +48,22 @@ Vue.component("image-modal", {
         return {
             comment: "",
             username: "",
-            comments: []
+            comments: [],
+            image: {}
         };
     },
 
-    //watcher is a function that runs whenever a PROP has changed!//
-
-    //watch: {
-    //     imageId: function() {
-    //             this function runs whenever id in url changes
-    //      console.log("imageId has changed!");
-    //     axios request to get image and comments
-    //     }
-    // },
-
     mounted: function() {
-        axios.get(`/seeComment/${this.image.id}`).then(res => {
+        axios
+            .get(`/cards/${this.imageId}`)
+            .then(res => {
+                this.image = res.data;
+            })
+            .catch(() => {
+                this.close();
+            });
+
+        axios.get(`/seeComment/${this.imageId}`).then(res => {
             this.comments = res.data;
         });
     }
@@ -73,9 +73,6 @@ new Vue({
     el: "#main",
     data: {
         cards: [],
-        //imageId: location.hash.slice(1) || 0;//
-        //the default value of imageId should be the id in the url IF THERE IS ONE!
-        //if there insn't one -- just default to 0, like before.
         upload: {},
         pageNames: [
             "retrato",
@@ -87,30 +84,27 @@ new Vue({
             "fotografija",
             "bilde",
             "fotografering",
+            "kartinka",
             "fotografije",
             "fotografía",
             "kuva",
             "fotografia",
-            "foto",
             "immagine",
             "gambar",
-            "slika",
-            "kartinka"
+            "foto",
+            "slika"
         ],
         currentPageName: 0,
-        modalImage: null
+        modalImage: location.hash.slice(1) || 0
     },
     methods: {
         handleFileChange: function(e) {
             this.upload.file = e.target.files[0];
         },
 
-        openModal: function(card) {
-            this.modalImage = card;
-        },
-
         closeModal: function() {
             this.modalImage = null;
+            location.hash = "";
         },
 
         uploadImage: function(e) {
@@ -143,16 +137,12 @@ new Vue({
         }
     },
     mounted: function() {
-        // var self = this;
-        // //hashchange event fires every time the number following
-        // //the hash in the url changes//
-        // window.addEventListener("hashchange", function() {
-        //     console.log("location: ", location.hash);
-        // remove the hash symbol and get just the number
-        // console.log('location.hash.slice(1): ',
-        // location.hash.slice(1))
-        // self.card = location.hash.slice(1);
-        // });
+        window.addEventListener("hashchange", () => {
+            const imageId = location.hash.slice(1);
+            if (imageId !== "") {
+                this.modalImage = imageId;
+            }
+        });
 
         axios.get("/cards").then(res => {
             this.cards = res.data;
@@ -188,8 +178,6 @@ new Vue({
         }, 1000);
     }
 });
-
-//when the user put something that doesn't exist in the database, close the modal//
 
 function isScrolledToBottom() {
     const documentHeight = document.documentElement.scrollHeight;

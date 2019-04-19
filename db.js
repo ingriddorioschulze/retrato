@@ -59,3 +59,13 @@ exports.getMoreImages = function(id) {
         return result.rows;
     });
 };
+
+exports.getImageById = function(id) {
+    const q = `SELECT url, title, description, username, id, created_at 
+    FROM images
+    WHERE id = $1`;
+    const params = [id];
+    return db.query(q, params).then(result => {
+        return result.rows[0];
+    });
+};

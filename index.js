@@ -34,6 +34,20 @@ app.get("/cards", (req, res) => {
     });
 });
 
+app.get("/cards/:id", (req, res) => {
+    db.getImageById(req.params.id)
+        .then(image => {
+            if (image !== undefined) {
+                res.send(image);
+            } else {
+                res.sendStatus(404);
+            }
+        })
+        .catch(() => {
+            res.sendStatus(400);
+        });
+});
+
 app.post("/uploadImage", uploader.single("file"), (req, res) => {
     s3.uploadImage(req.file.path, req.file.filename)
         .then(url => {
@@ -75,9 +89,13 @@ app.post("/addComment", (req, res) => {
 });
 
 app.get("/seeComment/:imageId", (req, res) => {
-    db.getCommentsForImage(req.params.imageId).then(comments => {
-        res.send(comments);
-    });
+    db.getCommentsForImage(req.params.imageId)
+        .then(comments => {
+            res.send(comments);
+        })
+        .catch(() => {
+            res.sendStatus(400);
+        });
 });
 
 app.get("/getMoreImages/:id", (req, res) => {

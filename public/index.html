@@ -31,8 +31,7 @@
         <div class="card" v-for="card in cards">
 
           <a :href = "'#' + card.id"> 
-            <img class="card-image" v-on:click="openModal(card)" v-bind:src="card.url" v-bind:alt="card.title" /> 
-            <!-- //remove the on click event// -->
+            <img class="card-image" v-bind:src="card.url" v-bind:alt="card.title" /> 
           </a>
 
           <div class="card-content">
@@ -41,7 +40,7 @@
           </div>
         </div>
       </div>
-        <image-modal v-bind:image="modalImage" v-if="modalImage" v-on:close="closeModal"/>
+        <image-modal v-bind:image-id="modalImage" v-if="modalImage" v-on:close="closeModal"/>
     </main>
     <script src="/js/vue.js"></script>
     <script src="/js/axios.min.js"></script>
