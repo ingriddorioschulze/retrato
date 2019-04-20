@@ -6,7 +6,7 @@ Vue.component("image-modal", {
         <img class="image-modal-image" v-bind:src="image.url"/>
         <div class="image-modal-title">{{image.title}}</div>
         <div class="image-modal-description">{{image.description}}</div>
-        <div class="image-modal-username-date">{{image.username}} at {{image.created_at}}</div>
+        <div class="image-modal-username-date"><b>{{image.username}}</b> {{image.created_at}}</div>
         <div class="add-comment">Add a comment!</div>
         <form v-on:submit="addComment" class="addComment">
             <input v-model="comment" class="addComment-comment" type="text" placeholder="comment" required/>
@@ -15,12 +15,13 @@ Vue.component("image-modal", {
         </form>
             <div v-for="c in comments" class="comment">
                 <div>{{c.comment}}!</div>
-                <div>{{c.username}} at {{c.created_at}}</div>
+                <div><b>{{c.username}}</b> {{c.created_at}}</div>
             </div>
         </div>
     </div>`,
     methods: {
         close: function() {
+            document.body.style.overflow = "initial";
             this.$emit("close");
         },
         addComment: function(e) {
@@ -54,6 +55,7 @@ Vue.component("image-modal", {
     },
 
     mounted: function() {
+        document.body.style.overflow = "hidden";
         axios
             .get(`/cards/${this.imageId}`)
             .then(res => {

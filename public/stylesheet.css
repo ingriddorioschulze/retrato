@@ -23,6 +23,7 @@ body {
   );
   background-size: 860px 860px;
   font-family: Quicksand;
+  margin: 0;
 }
 
 .page-title {
@@ -59,6 +60,12 @@ body {
   margin-right: 5px;
   color: grey;
 }
+#input-title:hover {
+  border: 2px solid;
+  border-color: #df0054;
+  font-weight: bold;
+}
+
 #input-description {
   height: 30px;
   width: 18%;
@@ -67,6 +74,13 @@ body {
   margin-right: 5px;
   color: grey;
 }
+
+#input-description:hover {
+  border: 2px solid;
+  border-color: #df0054;
+  font-weight: bold;
+}
+
 #input-username {
   height: 30px;
   width: 15%;
@@ -74,6 +88,12 @@ body {
   border-radius: 2px;
   margin-right: 5px;
   color: grey;
+}
+
+#input-username:hover {
+  border: 2px solid;
+  border-color: #df0054;
+  font-weight: bold;
 }
 
 .inputfile {
@@ -104,15 +124,26 @@ body {
   white-space: nowrap;
 }
 
+.inputfile + label:hover {
+  border: 2px solid;
+  border-color: #df0054;
+  font-weight: bold;
+}
+
 .btn-upload-image {
   height: 30px;
   border: 1px white solid;
   border-radius: 2px;
   font-family: Quicksand;
   font-size: 14px;
-  font-weight: bold;
   text-align: center;
   color: grey;
+}
+
+.btn-upload-image:hover {
+  border: 2px solid;
+  border-color: #df0054;
+  font-weight: bold;
 }
 
 .last-uploads {
@@ -121,6 +152,7 @@ body {
   margin-top: 40px;
   margin-left: 20px;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .card-container {
@@ -130,7 +162,7 @@ body {
 }
 
 .card {
-  flex: 0 1 30%;
+  flex: 1 1 20vw;
   height: 470px;
   border: 1px #928a97;
   border-radius: 2px;
@@ -256,6 +288,12 @@ body {
   justify-content: center;
 }
 
+.addComment-comment:hover {
+  border: 2px solid;
+  border-color: #df0054;
+  font-weight: bold;
+}
+
 .addComment-username {
   height: 30px;
   width: 40%;
@@ -265,19 +303,42 @@ body {
   justify-content: center;
 }
 
+.addComment-username:hover {
+  border: 2px solid;
+  border-color: #df0054;
+  font-weight: bold;
+}
+
 .addComment-submit {
   height: 30px;
   border: 1px white solid;
   border-radius: 2px;
   font-family: Quicksand;
   font-size: 14px;
-  font-weight: bold;
   text-align: center;
   color: grey;
+}
+
+.addComment-submit:hover {
+  border: 2px solid;
+  border-color: #df0054;
+  font-weight: bold;
 }
 
 .comment {
   text-align: center;
   font-size: 15px;
   margin-bottom: 30px;
+}
+
+.copyright {
+  display: flex;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  background-color: #df0054;
+  margin-top: 30px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
 }

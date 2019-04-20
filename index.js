@@ -4,6 +4,7 @@ const multer = require("multer");
 const uidSafe = require("uid-safe");
 const path = require("path");
 const s3 = require("./s3");
+const moment = require("moment");
 
 const diskStorage = multer.diskStorage({
     destination: function(req, file, callback) {
@@ -38,6 +39,7 @@ app.get("/cards/:id", (req, res) => {
     db.getImageById(req.params.id)
         .then(image => {
             if (image !== undefined) {
+                image.created_at = moment(image.created_at).calendar();
                 res.send(image);
             } else {
                 res.sendStatus(404);
@@ -83,7 +85,7 @@ app.post("/addComment", (req, res) => {
     ).then(comment => {
         res.json({
             id: comment.id,
-            created_at: comment.created_at
+            created_at: moment(comment.created_at).calendar()
         });
     });
 });
@@ -91,6 +93,9 @@ app.post("/addComment", (req, res) => {
 app.get("/seeComment/:imageId", (req, res) => {
     db.getCommentsForImage(req.params.imageId)
         .then(comments => {
+            comments.forEach(comment => {
+                comment.created_at = moment(comment.created_at).calendar();
+            });
             res.send(comments);
         })
         .catch(() => {
