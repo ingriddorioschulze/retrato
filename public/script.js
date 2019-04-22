@@ -14,7 +14,7 @@ Vue.component("image-modal", {
             <button class="addComment-submit" type="submit">submit</button>
         </form>
             <div v-for="c in comments" class="comment">
-                <div>{{c.comment}}!</div>
+                <div>{{c.comment}}</div>
                 <div><b>{{c.username}}</b> {{c.created_at}}</div>
             </div>
         </div>
