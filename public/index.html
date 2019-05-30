@@ -16,18 +16,18 @@
 
       <div class="add-images-container">
         <div class="add-image-title">add your image now</div>
-        <form v-on:submit="uploadImage" class="add-images">
-          <input id="input-title" v-model="upload.title" type="text" placeholder="title" required/>
-          <input id="input-description" v-model="upload.description" type="text" placeholder="description" required/>
-          <input id="input-username" v-model="upload.username" type="text" placeholder="username" required/>
+        <form v-on:submit="uploadImage">
+          <input class="input" v-model="upload.title" type="text" placeholder="title" required/>
+          <input class="input" v-model="upload.description" type="text" placeholder="description" required/>
+          <input class="input" v-model="upload.username" type="text" placeholder="username" required/>
 
-          <input type="file" name="input-file" id="file" class="inputfile" v-on:change="handleFileChange" required accept="image/*"/>
-          <label for="file"><span class="choose-file">{{upload.file ? upload.file.name.slice(0, 10) : 'choose a file...'}}</span></label>
+          <input type="file" name="input-file" id="file" class="input inputfile" v-on:change="handleFileChange" required accept="image/*"/>
+          <label class="input" for="file"><span class="choose-file">{{upload.file ? upload.file.name.slice(0, 10) : 'choose a file...'}}</span></label>
 
-          <button class="btn-upload-image"type="submit">upload</button>
+          <button class="btn" type="submit">upload</button>
         </form>
       </div>
-      <div class="last-uploads">last uploads</div>
+      <div class="last-uploads">LAST UPLOADS</div>
       <div class="card-container">
         <div class="card" v-for="card in cards">
 
@@ -41,7 +41,7 @@
           </div>
         </div>
       </div>
-      <footer class="copyright"> © 2019 by Ingrid do Rio Schulze</footer>
+      <footer class="copyright"> © 2019 retratar by Ingrid do Rio Schulze</footer>
       <image-modal v-bind:image-id="modalImage" v-if="modalImage" v-on:close="closeModal"></image-modal>
     </main>
     <script src="/js/vue.js"></script>

@@ -8,10 +8,10 @@ Vue.component("image-modal", {
         <div class="image-modal-description">{{image.description}}</div>
         <div class="image-modal-username-date"><b>{{image.username}}</b> {{image.created_at}}</div>
         <div class="add-comment">Add a comment!</div>
-        <form v-on:submit="addComment" class="addComment">
-            <input v-model="comment" class="addComment-comment" type="text" placeholder="comment" required/>
-            <input v-model="username" class="addComment-username" type="text" placeholder="username" required/>
-            <button class="addComment-submit" type="submit">submit</button>
+        <form v-on:submit="addComment">
+            <input v-model="comment" class="input" type="text" placeholder="comment" required/>
+            <input v-model="username" class="input" type="text" placeholder="username" required/>
+            <button class="btn" type="submit">submit</button>
         </form>
             <div v-for="c in comments" class="comment">
                 <div>{{c.comment}}</div>

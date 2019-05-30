@@ -109,4 +109,6 @@ app.get("/getMoreImages/:id", (req, res) => {
     });
 });
 
-app.listen(8080);
+app.listen(8080, () => {
+    console.log("Oi, retrato");
+});

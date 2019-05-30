@@ -39,61 +39,25 @@ body {
   justify-content: center;
 }
 
-.add-images {
-  display: flex;
-  justify-content: center;
-}
-
 .add-image-title {
   font-size: 20px;
-  margin-top: 20px;
-  margin-bottom: 30px;
   color: white;
+  padding: 20px;
   text-align: center;
 }
 
-#input-title {
+form {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.input {
   height: 30px;
-  width: 18%;
   border: 1px white solid;
   border-radius: 2px;
-  margin-right: 5px;
+  margin: 0 5px 0 5px;
   color: grey;
-}
-#input-title:hover {
-  border: 2px solid;
-  border-color: #df0054;
-  font-weight: bold;
-}
-
-#input-description {
-  height: 30px;
-  width: 18%;
-  border: 1px white solid;
-  border-radius: 2px;
-  margin-right: 5px;
-  color: grey;
-}
-
-#input-description:hover {
-  border: 2px solid;
-  border-color: #df0054;
-  font-weight: bold;
-}
-
-#input-username {
-  height: 30px;
-  width: 15%;
-  border: 1px white solid;
-  border-radius: 2px;
-  margin-right: 5px;
-  color: grey;
-}
-
-#input-username:hover {
-  border: 2px solid;
-  border-color: #df0054;
-  font-weight: bold;
 }
 
 .inputfile {
@@ -105,32 +69,29 @@ body {
   z-index: -1;
 }
 
+.inputfile + label {
+  background: white;
+  width: 12%;
+  font-size: 12px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input:hover {
+  border: 2px solid;
+  border-color: #df0054;
+  font-weight: bold;
+}
+
 ::placeholder {
   font-family: Quicksand;
   font-size: 12px;
   text-align: center;
 }
 
-.inputfile + label {
-  height: 30px;
-  width: 15%;
-  font-size: 12px;
-  color: grey;
-  border: 1px white solid;
-  background: white;
-  border-radius: 2px;
-  padding: 7px 10px;
-  margin-right: 5px;
-  white-space: nowrap;
-}
-
-.inputfile + label:hover {
-  border: 2px solid;
-  border-color: #df0054;
-  font-weight: bold;
-}
-
-.btn-upload-image {
+.btn {
   height: 30px;
   border: 1px white solid;
   border-radius: 2px;
@@ -138,9 +99,10 @@ body {
   font-size: 14px;
   text-align: center;
   color: grey;
+  margin: 0 5px 0 5px;
 }
 
-.btn-upload-image:hover {
+.btn:hover {
   border: 2px solid;
   border-color: #df0054;
   font-weight: bold;
@@ -149,10 +111,8 @@ body {
 .last-uploads {
   font-size: 25px;
   color: white;
-  margin-top: 40px;
-  margin-left: 20px;
-  margin-bottom: 20px;
   text-align: center;
+  padding: 20px;
 }
 
 .card-container {
@@ -177,8 +137,8 @@ body {
 
 .card-image {
   width: 100%;
-  min-width: 300px;
   height: 70%;
+  min-width: 300px;
   object-fit: cover;
   object-position: center;
   cursor: pointer;
@@ -206,8 +166,6 @@ body {
   text-align: center;
 }
 
-/* //POPUP// */
-
 .image-modal-container {
   top: 0;
   display: flex;
@@ -225,7 +183,6 @@ body {
   height: 90%;
   background-color: black;
   color: white;
-  /* justify-content: center; */
   align-items: center;
   position: relative;
   overflow: scroll;
@@ -233,22 +190,23 @@ body {
 
 .image-modal-image {
   max-height: 50%;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 30px;
   border: 2px solid white;
 }
 
 .image-modal-title {
   font-family: Amatic SC;
-  font-weight: 600;
-  font-size: 60px;
+  font-weight: bold;
+  font-size: 40px;
   text-align: center;
+  padding: 5px;
 }
 
 .image-modal-description {
   font-family: Quicksand;
-  font-size: 25px;
+  font-size: 20px;
   text-align: center;
+  padding: 5px;
 }
 
 .image-modal-username-date {
@@ -256,6 +214,7 @@ body {
   font-size: 15px;
   text-align: center;
   margin-bottom: 20px;
+  padding: 5px;
 }
 
 .image-modal-close {
@@ -268,77 +227,36 @@ body {
 
 .add-comment {
   font-size: 20px;
-  margin-top: 20px;
-  margin-bottom: 30px;
+  padding: 20px;
   color: white;
   text-align: center;
-}
-
-.addComment {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
-}
-.addComment-comment {
-  height: 30px;
-  width: 40%;
-  border: 1px white solid;
-  border-radius: 2px;
-  margin-right: 5px;
-  justify-content: center;
-}
-
-.addComment-comment:hover {
-  border: 2px solid;
-  border-color: #df0054;
-  font-weight: bold;
-}
-
-.addComment-username {
-  height: 30px;
-  width: 40%;
-  border: 1px white solid;
-  border-radius: 2px;
-  margin-right: 5px;
-  justify-content: center;
-}
-
-.addComment-username:hover {
-  border: 2px solid;
-  border-color: #df0054;
-  font-weight: bold;
-}
-
-.addComment-submit {
-  height: 30px;
-  border: 1px white solid;
-  border-radius: 2px;
-  font-family: Quicksand;
-  font-size: 14px;
-  text-align: center;
-  color: grey;
-}
-
-.addComment-submit:hover {
-  border: 2px solid;
-  border-color: #df0054;
-  font-weight: bold;
 }
 
 .comment {
   text-align: center;
   font-size: 15px;
-  margin-bottom: 30px;
+  padding: 10px;
 }
 
-.copyright {
+main {
+  min-height: calc(100vh - 143px);
+}
+
+footer {
   display: flex;
+  background-color: black;
+  left: 0;
+  bottom: 0;
+  height: 40px;
+  width: 100%;
   font-size: 16px;
   color: white;
   text-align: center;
-  background-color: #df0054;
   margin-top: 30px;
-  height: 50px;
+  text-align: center;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (max-width: 700px) {
 }
