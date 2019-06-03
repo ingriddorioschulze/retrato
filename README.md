@@ -3,12 +3,6 @@
 Retrato was created thinking of people who travel, live and explore different places and cultures of the world.
 Retrato is where these people can share their experiences through pictures in a simple, easy, fast and enjoyable way.
 
-# instructions
-
-Prior to running the project, please ensure that you npm install all dependencies in order to successfully run the project on your computer.
-
-MORE INSTRUCTIONS
-
 # features
 
 ## home
